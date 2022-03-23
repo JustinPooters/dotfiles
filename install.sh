@@ -14,6 +14,15 @@ if [ ! -f "$HOME/.bash_profile" ]; then
   ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
 fi;
 
+if [ ! -f "$HOME/.vimrc" ]; then
+  ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+fi
+
+if [ ! -f "$HOME/.config/nvim/init.vim" ]; then
+  mkdir -p $HOME/.config/nvim
+  ln -s $HOME/dotfiles/.init.vim $HOME/.config/nvim/init.vim
+fi
+
 read -p "Done copying files. Press enter to continue the installation."
 
 if [[ $OSTYPE == 'darwin'* ]]; then
@@ -38,7 +47,24 @@ else
  apt install docker-compose
 fi;
 
-echo "Installation completed"
+echo "Installing completed"
+read -p "Press enter to continue"
+echo "Installing vim/nvim plugins"
+
+# Install vim plugins
+if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
+fi
+
+# Build coc.nvim
+cd $HOME/.vim/bundle/coc.nvim/
+sudo npm i -g yarn
+yarn install
+yarn build
+
+
+
 echo "After closing your terminal, these changes will be applied"
 read -p "Press enter to close your terminal"
 exit
