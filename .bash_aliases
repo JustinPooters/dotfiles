@@ -1,0 +1,7 @@
+alias dev='cd ~/Development'
+alias g='git'
+alias commit='git commit -m'
+alias cls='clear'
+alias ..='cd ..'
+alias www='cd /var/www/html'
+alias gitignore='nano .gitignore'
