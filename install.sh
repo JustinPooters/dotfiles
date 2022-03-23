@@ -7,20 +7,20 @@ echo "."
 echo "."
 echo "Copying files..."
 if [ ! -f "$HOME/.bashrc" ]; then
-  ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
+ sudo ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
 fi;
 
 if [ ! -f "$HOME/.bash_profile" ]; then 
-  ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
+  sudo ln -s $HOME/dotfiles/.bash_profile $HOME/.bash_profile
 fi;
 
 if [ ! -f "$HOME/.vimrc" ]; then
-  ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+  sudo ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
 fi
 
 if [ ! -f "$HOME/.config/nvim/init.vim" ]; then
-  mkdir -p $HOME/.config/nvim
-  ln -s $HOME/dotfiles/.init.vim $HOME/.config/nvim/init.vim
+  sudo mkdir -p $HOME/.config/nvim
+  sudo ln -s $HOME/dotfiles/.init.vim $HOME/.config/nvim/init.vim
 fi
 
 read -p "Done copying files. Press enter to continue the installation."
@@ -38,13 +38,15 @@ if [[ $OSTYPE == 'darwin'* ]]; then
 else
  echo "You are currently on Linux (LINUX)"
  echo "Using apt to install"
- apt install git
- apt install vim
- apt install tmux
- apt install node
- apt install nvim
- apt install docker
- apt install docker-compose
+ sudo apt install git -y
+ sudo apt install vim -y 
+ sudo apt install tmux -y
+ sudo apt install nodejs -y
+ sudo apt install npm -y
+ sudo apt install neovim -y 
+ sudo apt install docker -y
+ sudo apt install docker-compose -y
+ sudo apt install yarn -y
 fi;
 
 echo "Installing completed"
