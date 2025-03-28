@@ -73,7 +73,7 @@ else
 fi;
 PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
-PS1+="\[${white}|- ${userStyle}\]🧑 \u"; # username
+PS1+="\[${white}|- ${userStyle}\]👽 \u"; # username
 PS1+="\[${white}\] @ 💻 ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";

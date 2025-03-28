@@ -1,10 +1,3 @@
-echo "Welcome to this install script"
-echo "Do not delete this folder after installation"
-echo "Also make sure this folder is in your user directory (e.g. /home/user/ or /users/user/"
-echo "script made by Justin Pooters inspired on the script of Stan Van Rooy"
-
-echo "."
-echo "."
 echo "Copying files..."
 if [ ! -f "$HOME/.bashrc" ]; then
  sudo ln -s $HOME/dotfiles/.bashrc $HOME/.bashrc
