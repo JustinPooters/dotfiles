@@ -1,58 +1,107 @@
-# dotfiles
+# 🧰 Justin’s Dev Configs
 
-Welcome to my **dotfiles** repo.  
-This repository contains configurations for multiple shells to quickly set up my preferred terminal environment.  
-Feel free to use it for your own setup as well.
+[![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows&logoColor=white)](#-windows-setup)
+[![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=white)](#-macos-setup)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](#-linux-setup)
+[![Shell](https://img.shields.io/badge/Shell-PowerShell%20%7C%20Bash%20%7C%20Zsh-5391FE)](#)
+[![Prompt](https://img.shields.io/badge/Prompt-Oh%20My%20Posh%20%7C%20Starship-4782B4)](#)
 
-## Supported Shells
-Currently available:
-- Bash
-- PowerShell
+Cross-platform developer setup for **Windows**, **macOS**, and **Linux**.  
+Includes prompt themes, VS Code settings, Git config, and automation scripts to get your environment ready in minutes.
 
-Coming soon:
-- Zsh
-- Fish
+> 💬 *“Ship it. If it breaks, we’ll learn something new.”*
 
-## Functions
-- Color terminal themes
-- Essential package installation
-- Tmux configuration
-- Vim customization
+---
 
-## How to Install
-To install, simply clone the repository and run the installation script:
+## 📦 What’s Inside
 
-##### BASH
-```
+| Platform | Shell | Prompt | Theme file | Setup script |
+|-----------|--------|---------|-------------|---------------|
+| 🪟 Windows | PowerShell 7 | Oh My Posh | `terminal/oh-my-posh/theme.json` | `scripts/setup.ps1` |
+| 🐧 Linux | Bash | Starship | `terminal/starship.toml` | `scripts/setup-linux.sh` |
+| 🍎 macOS | Zsh | Starship | `terminal/starship.toml` | `scripts/setup-mac.sh` |
+
+Also includes:
+- Shared `.NET version` detection (PowerShell & Bash/Zsh)
+- VS Code settings, keybindings, and extensions
+- Git global config and ignore file
+- `.editorconfig` for consistent code style
+
+---
+
+## 🚀 Quick Start
+
+### 🪟 Windows Setup
+```powershell
 git clone https://github.com/justinpooters/dotfiles
-cd dotfiles/bash
-chmod +x install.sh
-./install.sh
+cd dotfiles
+pwsh -ExecutionPolicy Bypass -File .\scripts\setup.ps1 -All
 ```
+Then reopen PowerShell — your Oh My Posh prompt and profile are live.  
 
-##### Powershell
-```
+---
+
+### 🍎 macOS Setup
+```bash
 git clone https://github.com/justinpooters/dotfiles
-cd dotfiles/powershell
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
-./install.ps1
+cd dotfiles
+chmod +x scripts/setup-mac.sh
+./scripts/setup-mac.sh
+exec zsh
 ```
 
-The installation script will detect your shell and apply the appropriate configurations.
+This will:
+- Install Homebrew (if needed)
+- Install `git`, `starship`, `jq`, and `wget`
+- Link your Starship theme and enable it in `.zshrc`
+- Apply VS Code and Git settings  
 
-# Features
+---
 
-## Color Terminal
-Here's a preview of how your terminal will look after installation:
+### 🐧 Linux Setup
+```bash
+git clone https://github.com/justinpooters/dotfiles
+cd dotfiles
+chmod +x scripts/setup-linux.sh
+./scripts/setup-linux.sh
+source ~/.bashrc
+```
 
-###### BASH
-![Terminal](https://i.ibb.co/55VbHNZ/image.png)
+Installs packages via **apt** or **Linuxbrew**, sets up Starship, and applies configs.
 
-###### Powershell
-![Terminal](https://i.ibb.co/mFMsTZNW/image.png)
+---
 
+## 🧩 PowerShell Functions
+*(Windows only — inside `terminal/powershell-profile.ps1`)*
 
-**Note:** Terminal username, hostname, folder location, and git repository information will be customized based on your system configuration.
+| Command | Description |
+|----------|-------------|
+| `dev` | Jump to `~/Development`, auto-creates if missing |
+| `whereami` | Print current directory |
+| `..` | Navigate one level up |
+| `l` | Shortcut for `ls` |
+| `touch file.txt` | Create a new file |
+| `notepad file.txt` | Open in Notepad++ |
+| Auto .NET Version | Detects nearest `.csproj` → sets `$env:DOTNET_VERSION` |
 
-## More Features Coming Soon
-Stay tuned for additional shell support and features!
+---
+
+## ⚙️ Updating VS Code
+
+After changing extensions:
+```bash
+code --list-extensions > vscode/extensions.txt
+```
+
+Commit & push to sync across machines.
+
+---
+
+## ❤️ Proud to be part of <span style="color:#E8003D;">ilionx</span>
+
+Maintained by **[Justin Pooters](https://github.com/justinpooters)**  
+
+---
+
+### 📝 License
+MIT — fork, adapt, and improve 🚀
